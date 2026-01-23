@@ -67,7 +67,7 @@ export interface IMReleaseDate {
   attributes: UpdatedClass;
 }
 
-export interface PodcastList {
+export interface PodcastProps {
   podcasts: PodcastsMapingData[];
 }
 
@@ -88,3 +88,8 @@ export type FormattedPodcast = {
   img: string;
   artist: string;
 };
+
+export interface SearchPodcastProps {
+  onSearch: (value: string) => void;
+  totalResults: number;
+}

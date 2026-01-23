@@ -1,8 +1,8 @@
 import './ListPodcasts.css';
 import { Link } from 'react-router-dom';
-import type { PodcastList } from '@/api/types/Podcasts';
+import type { PodcastProps } from '@/api/types/Podcasts';
 
-const ListPodcasts = ({ podcasts }: PodcastList) => {
+const ListPodcasts = ({ podcasts }: PodcastProps) => {
   return (
     <>
       <div className="list-podcasts-container">

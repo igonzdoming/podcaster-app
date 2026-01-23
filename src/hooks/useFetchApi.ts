@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getListPodcasts, getEpisodesDetail } from '@/api/api.services';
 import { useAppContext } from '@/context';
+import { formatResponses } from '@/utils/formatApiResponses';
 
 export const useFetchApi = (type: string) => {
   const { podcasts, setPodcasts, setEpisodes, selectedEpisode } =
@@ -15,7 +16,9 @@ export const useFetchApi = (type: string) => {
 
         if (type === 'top_100' && podcasts.length === 0) {
           const data = await getListPodcasts();
-          setPodcasts(data?.feed?.entry ?? []);
+          const response = data.feed.entry;
+          const formatted = formatResponses(response, type);
+          setPodcasts(formatted);
         }
 
         if (type === 'episodes') {

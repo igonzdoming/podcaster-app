@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
-import type { Entry, Podcast } from '@/api/types/Podcasts';
+import type { Podcast, PodcastsMapingData } from '@/api/types/Podcasts';
 import type { Episodes } from '@/api/types/Episodes';
 
 type AppContextType = {
-  podcasts: Entry[];
+  podcasts: PodcastsMapingData[];
   episodes: Podcast[] | null;
   selectedEpisode: string;
-  setPodcasts: (podcasts: Entry[]) => void;
+  setPodcasts: (podcasts: PodcastsMapingData[]) => void;
   setEpisodes: (episodes: Podcast[]) => void;
   setSelectedEpisode: (selectedEpisode: string) => void;
 };
@@ -15,7 +15,7 @@ type AppContextType = {
 const AppContext = createContext<AppContextType | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [podcasts, setPodcasts] = useState<Entry[]>([]);
+  const [podcasts, setPodcasts] = useState<PodcastsMapingData[]>([]);
   const [episodes, setEpisodes] = useState<Episodes[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState<string>('');
 

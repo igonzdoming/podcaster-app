@@ -3,7 +3,18 @@
   --color-text: #111827;
   --color-primary: #427490;
   --spacing-sm: 1rem;
-  --color-link:  #427490;
+  --color-link: #427490;
   --spacing-md: 1.5rem;
   --shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
 }

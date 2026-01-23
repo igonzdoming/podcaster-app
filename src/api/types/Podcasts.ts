@@ -66,3 +66,25 @@ export interface IMReleaseDate {
   label: string;
   attributes: UpdatedClass;
 }
+
+export interface PodcastList {
+  podcasts: PodcastsMapingData[];
+}
+
+export interface PodcastsMapingData {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  img: string;
+  artist: string;
+}
+
+export type FormattedPodcast = {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  img: string;
+  artist: string;
+};

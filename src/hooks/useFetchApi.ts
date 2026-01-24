@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { getListPodcasts, getPodcastDetail } from '../api/api.services';
 import { useAppContext } from '../context';
 import { formatResponses } from '../utils/formatApiResponses';
+import { useNavigate } from 'react-router-dom';
 
 export const useFetchApi = () => {
   const {
-    setMessage,
     podcasts,
     setPodcasts,
     selectedEpisode,
     podcastSelected,
     setPodcastDetail,
   } = useAppContext();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [fetchType, setFetchType] = useState<string>();
@@ -35,11 +36,7 @@ export const useFetchApi = () => {
       }
     } catch {
       setError(true);
-      setMessage({
-        message: 'Ha ocurrido un problema',
-        type: 'error',
-        duration: 2000,
-      });
+      navigate('/');
       setTimeout(() => {
         setError(false);
       }, 200);

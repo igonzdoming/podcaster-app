@@ -15,15 +15,14 @@ const DetailEpisodes = ({
   episodeId,
 }: ListEpisodesProps) => {
   const isEpisodeDetail = Boolean(episodeId);
-  const { setMessage } = useAppContext();
+  const { setStatusIcon } = useAppContext();
   const filteredPodcast = podcastDetail.find(
     (pod) => pod.trackId === Number(episodeId)
   );
 
   useEffect(() => {
     if (isEpisodeDetail) {
-      setMessage({
-        message: 'Detalle de episodio completado',
+      setStatusIcon({
         type: 'info',
         duration: 2000,
       });
@@ -31,30 +30,43 @@ const DetailEpisodes = ({
   }, [isEpisodeDetail]);
   return (
     <div
-      className="list-episodes-table-container"
+      className="list-detail-episodes-table-container"
       role="region"
       aria-labelledby="episodes-title"
     >
       {!isEpisodeDetail ? (
         <>
-          <h2 id="episodes-title" className="list-episodes-header">
+          <h2
+            id="episodes-title"
+            className="list-detail-episodes-header"
+            style={{ fontWeight: '600' }}
+          >
             Episodes: {podcastCount}
           </h2>
 
-          <div className="list-episodes-table-container-items">
+          <div className="list-detail-episodes-table-container-items">
             <table
-              className="list-episodes-table"
+              className="list-detail-episodes-table"
               aria-label="Lista de episodios del podcast"
             >
               <thead>
                 <tr>
-                  <th scope="col" className="list-episodes-table-main-column">
+                  <th
+                    scope="col"
+                    className="list-detail-episodes-table-main-column"
+                  >
                     Title
                   </th>
-                  <th scope="col" className="list-episodes-table-bordered">
+                  <th
+                    scope="col"
+                    className="list-detail-episodes-table-bordered"
+                  >
                     Date
                   </th>
-                  <th scope="col" className="list-episodes-table-bordered">
+                  <th
+                    scope="col"
+                    className="list-detail-episodes-table-bordered"
+                  >
                     Duration
                   </th>
                 </tr>
@@ -64,7 +76,7 @@ const DetailEpisodes = ({
                 {podcastDetail.map((track, index) => (
                   <tr
                     key={track.trackId}
-                    className="list-episodes-table-track-row"
+                    className="list-detail-episodes-table-track-row"
                     style={{
                       backgroundColor: ROW_COLORS[index % ROW_COLORS.length],
                     }}
@@ -91,7 +103,7 @@ const DetailEpisodes = ({
         </>
       ) : (
         filteredPodcast && (
-          <div className="list-episodes-table-container-items margin-episodes">
+          <div className="list-detail-episodes-table-container-items margin-episodes">
             <Link
               to={`/podcast/${podCastId}`}
               aria-label="Volver a la lista de episodios"

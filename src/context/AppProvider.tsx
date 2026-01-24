@@ -6,8 +6,7 @@ import type {
   PodcastsMapingData,
 } from '../api/types/Podcasts';
 import type { Episodes } from '@/api/types/Episodes';
-import type { ToastProps } from '@/components/Toast/Types/Toast';
-
+import type { StatusIconsProps } from '@/components/StatusIcon/Types/StatusIcon';
 export function AppProvider({ children }: { children: ReactNode }) {
   // Podcasts
   const [podcasts, setPodcasts] = useState<PodcastsMapingData[]>([]);
@@ -19,8 +18,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [episodesById, setEpisodesById] = useState<Episodes[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState('');
 
-  // Toast
-  const [message, setMessage] = useState<ToastProps | null>(null);
+  // StatusIcon
+  const [statusIcon, setStatusIcon] = useState<StatusIconsProps | null>(null);
 
   return (
     <AppContext.Provider
@@ -35,8 +34,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setEpisodesById,
         selectedEpisode,
         setSelectedEpisode,
-        message,
-        setMessage,
+        statusIcon,
+        setStatusIcon,
       }}
     >
       {children}

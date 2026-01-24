@@ -15,7 +15,7 @@ const Detail = () => {
     podcasts,
     podcastSelected,
     podcastDetail,
-    setMessage,
+    setStatusIcon,
     setSelectedPodcast,
   } = useAppContext();
 
@@ -39,8 +39,7 @@ const Detail = () => {
   useEffect(() => {
     if (!podcastSelected || !selectedPodcast) return;
 
-    setMessage({
-      message: 'Detalle de podcast completado',
+    setStatusIcon({
       type: 'info',
       duration: 2000,
     });

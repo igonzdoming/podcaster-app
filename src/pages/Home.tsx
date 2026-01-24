@@ -7,7 +7,7 @@ import { useAppContext } from '@/context';
 
 const Home = () => {
   const { error, setFetchType } = useFetchApi();
-  const { setMessage, podcasts } = useAppContext();
+  const { setStatusIcon, podcasts } = useAppContext();
   const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
@@ -28,8 +28,7 @@ const Home = () => {
   }, [podcasts, search]);
   useEffect(() => {
     if (podcasts.length !== 0 && filteredPodcasts && !error && search === '') {
-      setMessage({
-        message: 'Listado de podcast completado',
+      setStatusIcon({
         type: 'info',
         duration: 2000,
       });

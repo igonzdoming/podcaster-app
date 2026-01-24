@@ -4,7 +4,7 @@ import type {
   Podcast,
   PodcastsMapingData,
 } from '../api/types/Podcasts';
-import type { ToastProps } from '@/components/Toast/Types/Toast';
+import type { StatusIconsProps } from '@/components/StatusIcon/Types/StatusIcon';
 
 export type AppContextType = {
   podcasts: PodcastsMapingData[];
@@ -12,8 +12,8 @@ export type AppContextType = {
   selectedEpisode: string;
   podcastSelected: string;
   podcastDetail: FormattedPodcastDetail[];
-  message: ToastProps | null;
-  setMessage: (message: ToastProps | null) => void;
+  statusIcon: StatusIconsProps | null;
+  setStatusIcon: (statusIcon: StatusIconsProps | null) => void;
   setPodcasts: (podcasts: PodcastsMapingData[]) => void;
   setEpisodesById: (episodes: Podcast[]) => void;
   setSelectedEpisode: (selectedEpisode: string) => void;

@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFetchApi } from '../hooks/useFetchApi';
 import ListPodcasts from '../components/ListPodcasts/ListPodcasts';
 import SearchPodcast from '../components/SearchPodcasts/SearchPodcasts';
 import { useMemo } from 'react';
+import { useAppContext } from '@/context';
 
 const Home = () => {
-  const { podcasts } = useFetchApi('top_100');
+  const { podcasts, error } = useFetchApi('top_100');
+  const { setMessage } = useAppContext();
   const [search, setSearch] = useState('');
+
   const filteredPodcasts = useMemo(() => {
     return podcasts.filter((podcast) =>
       Object.values(podcast).some(
@@ -17,6 +20,16 @@ const Home = () => {
       )
     );
   }, [podcasts, search]);
+  useEffect(() => {
+    if (podcasts.length !== 0 && filteredPodcasts && !error) {
+      setMessage({
+        message: 'Listado cargado',
+        type: 'success',
+        duration: 2000,
+      });
+    }
+  }, [filteredPodcasts]);
+
   return (
     <div>
       <SearchPodcast

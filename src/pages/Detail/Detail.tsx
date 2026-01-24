@@ -8,6 +8,7 @@ import DetailEpisodes from '../../components/DetailEpisodes/DetailEpisodes';
 
 export default function UserDetail() {
   const { setSelectedPodcast } = useFetchApi('podcast_detail');
+  const { setMessage } = useAppContext();
   const { podcasts, podcastSelected, podcastDetail } = useAppContext();
   const { id, episodeId } = useParams<{ id: string; episodeId: string }>();
   useEffect(() => {
@@ -16,6 +17,15 @@ export default function UserDetail() {
     }
   }, [id]);
   const filteredPodcast = podcasts.find((pod) => pod.id === podcastSelected);
+  useEffect(() => {
+    if (podcastSelected && filteredPodcast) {
+      setMessage({
+        message: 'Detalle de podcast cargado',
+        type: 'success',
+        duration: 2000,
+      });
+    }
+  }, [podcastSelected, filteredPodcast]);
   return (
     <>
       {podcastSelected && filteredPodcast && (

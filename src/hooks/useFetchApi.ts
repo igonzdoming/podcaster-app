@@ -5,6 +5,7 @@ import { formatResponses } from '../utils/formatApiResponses';
 
 export const useFetchApi = (type: string) => {
   const {
+    setMessage,
     podcasts,
     setPodcasts,
     selectedEpisode,
@@ -13,8 +14,7 @@ export const useFetchApi = (type: string) => {
     setPodcastDetail,
   } = useAppContext();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
+  const [error, setError] = useState(false);
   const fetchPodcasts = async () => {
     try {
       setLoading(true);
@@ -33,9 +33,16 @@ export const useFetchApi = (type: string) => {
 
         setPodcastDetail(formatResponses(response, type));
       }
-    } catch (err) {
-      console.error(err);
-      setError('Error fetching podcasts');
+    } catch {
+      setError(true);
+      setMessage({
+        message: 'Ha ocurrido un problema',
+        type: 'error',
+        duration: 2000,
+      });
+      setTimeout(() => {
+        setError(false);
+      }, 200);
     } finally {
       setLoading(false);
     }
@@ -44,5 +51,5 @@ export const useFetchApi = (type: string) => {
     fetchPodcasts();
   }, [type, selectedEpisode, podcastSelected]);
 
-  return { podcasts, loading, error, podcastSelected, setSelectedPodcast };
+  return { podcasts, loading, podcastSelected, setSelectedPodcast, error };
 };

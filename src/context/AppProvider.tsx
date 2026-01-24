@@ -6,6 +6,7 @@ import type {
   PodcastsMapingData,
 } from '../api/types/Podcasts';
 import type { Episodes } from '@/api/types/Episodes';
+import type { ToastProps } from '@/api/types/Toast';
 
 export function AppProvider({ children }: { children: ReactNode }) {
   // Podcasts
@@ -17,6 +18,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // Episodes
   const [episodesById, setEpisodesById] = useState<Episodes[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState('');
+
+  // Toast
+  const [message, setMessage] = useState<ToastProps | null>(null);
 
   return (
     <AppContext.Provider
@@ -31,6 +35,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setEpisodesById,
         selectedEpisode,
         setSelectedEpisode,
+        message,
+        setMessage,
       }}
     >
       {children}

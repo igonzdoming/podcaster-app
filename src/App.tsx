@@ -1,4 +1,5 @@
 import Header from '../src/components/Header/Header';
+import Toast from './components/Toast/Toast';
 import AppRouter from './router/AppRouter';
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
     <main>
       <Header />
       <AppRouter />
+      <Toast />
     </main>
   );
 };

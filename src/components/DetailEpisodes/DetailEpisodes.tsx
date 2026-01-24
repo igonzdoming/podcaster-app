@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { formatDateMMDDYYYY } from '../../utils/formatDates';
 import type { ListEpisodesProps } from '../../api/types/Episodes';
 import './DetailEpisodes.css';
 import { formatDuration } from '../../utils/formatTimes';
+import { useAppContext } from '@/context';
 
 const ROW_COLORS = ['#F9F9F9', '#fff'];
 
@@ -13,11 +15,20 @@ const DetailEpisodes = ({
   episodeId,
 }: ListEpisodesProps) => {
   const isEpisodeDetail = Boolean(episodeId);
-
+  const { setMessage } = useAppContext();
   const filteredPodcast = podcastDetail.find(
     (pod) => pod.trackId === Number(episodeId)
   );
 
+  useEffect(() => {
+    if (isEpisodeDetail) {
+      setMessage({
+        message: 'Detalle de episodio',
+        type: 'success',
+        duration: 2000,
+      });
+    }
+  }, [isEpisodeDetail]);
   return (
     <div
       className="list-episodes-table-container"

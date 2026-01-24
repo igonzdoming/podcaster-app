@@ -9,12 +9,12 @@ import type { Episodes } from '@/api/types/Episodes';
 
 type AppContextType = {
   podcasts: PodcastsMapingData[];
-  episodes: Podcast[] | null;
+  episodesById: Podcast[] | null;
   selectedEpisode: string;
   podcastSelected: string;
   podcastDetail: FormattedPodcastDetail[];
   setPodcasts: (podcasts: PodcastsMapingData[]) => void;
-  setEpisodes: (episodes: Podcast[]) => void;
+  setEpisodesById: (episodes: Podcast[]) => void;
   setSelectedEpisode: (selectedEpisode: string) => void;
   setSelectedPodcast: (podcastSelected: string) => void;
   setPodcastDetail: (podcastDetail: FormattedPodcastDetail[]) => void;
@@ -23,12 +23,14 @@ type AppContextType = {
 const AppContext = createContext<AppContextType | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
+  // Podcasts
   const [podcasts, setPodcasts] = useState<PodcastsMapingData[]>([]);
   const [podcastSelected, setSelectedPodcast] = useState<string>('');
   const [podcastDetail, setPodcastDetail] = useState<FormattedPodcastDetail[]>(
     []
   );
-  const [episodes, setEpisodes] = useState<Episodes[]>([]);
+  // Episodes
+  const [episodesById, setEpisodesById] = useState<Episodes[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState<string>('');
 
   return (
@@ -40,8 +42,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setSelectedPodcast,
         podcastDetail,
         setPodcastDetail,
-        episodes,
-        setEpisodes,
+        episodesById,
+        setEpisodesById,
         selectedEpisode,
         setSelectedEpisode,
       }}

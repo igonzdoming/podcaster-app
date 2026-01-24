@@ -21,15 +21,17 @@ export const useFetchApi = (type: string) => {
       if (type === 'top_100' && podcasts.length === 0) {
         const data = await getListPodcasts();
         const response = data.feed.entry;
-        const formatted = formatResponses(response, type);
-        setPodcasts(formatted);
+        setPodcasts(formatResponses(response, type));
       }
 
       if (type === 'podcast_detail' && podcastSelected) {
         const data = await getPodcastDetail(podcastSelected);
-        const response = data.results;
-        const formatted = formatResponses([response], type);
-        setPodcastDetail(formatted);
+
+        const response = Array.isArray(data.results)
+          ? data.results
+          : [data.results];
+
+        setPodcastDetail(formatResponses(response, type));
       }
     } catch (err) {
       console.error(err);

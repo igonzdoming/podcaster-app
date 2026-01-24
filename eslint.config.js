@@ -13,7 +13,20 @@ export default tseslint.config(
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      '.vite/**',
+      'build/**',
+      '.next/**',
+      'coverage/**',
+    ],
     plugins: {
       react,
       'react-hooks': reactHooks,

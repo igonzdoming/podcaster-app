@@ -1,1 +1,2 @@
-export { AppProvider, useAppContext } from './AppContext';
+export { AppProvider } from './AppProvider';
+export { useAppContext } from './AppContext';

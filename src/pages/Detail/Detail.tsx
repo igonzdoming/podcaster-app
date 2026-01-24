@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import { useFetchApi } from '@/hooks/useFetchApi';
-import DetailPodcast from '@/components/DetailPodcast/DetailPodcast';
+import { useFetchApi } from '../../hooks/useFetchApi';
+import DetailPodcast from '../../components/DetailPodcast/DetailPodcast';
 import './Detail.css';
 import { useEffect } from 'react';
-import { useAppContext } from '@/context';
-import ListEpisodes from '@/components/ListEpisodes/ListEpisodes';
+import { useAppContext } from '../../context';
+import DetailEpisodes from '../../components/DetailEpisodes/DetailEpisodes';
 
 export default function UserDetail() {
   const { setSelectedPodcast } = useFetchApi('podcast_detail');
@@ -21,13 +21,12 @@ export default function UserDetail() {
       {podcastSelected && filteredPodcast && (
         <div className="container-detail">
           <DetailPodcast podcast={filteredPodcast} />
-          {id && !episodeId && (
-            <ListEpisodes
-              podcastDetail={podcastDetail}
-              podcastCount={podcastDetail.length}
-              podCastId={id}
-            />
-          )}
+          <DetailEpisodes
+            podcastDetail={podcastDetail}
+            episodeId={episodeId}
+            podcastCount={podcastDetail.length}
+            podCastId={id}
+          />
         </div>
       )}
     </>

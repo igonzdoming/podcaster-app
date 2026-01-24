@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getListPodcasts, getPodcastDetail } from '@/api/api.services';
-import { useAppContext } from '@/context';
-import { formatResponses } from '@/utils/formatApiResponses';
+import { getListPodcasts, getPodcastDetail } from '../api/api.services';
+import { useAppContext } from '../context';
+import { formatResponses } from '../utils/formatApiResponses';
 
 export const useFetchApi = (type: string) => {
   const {

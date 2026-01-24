@@ -1,0 +1,200 @@
+.list-episodes-table-container {
+    margin-top: 5%;
+    width: 80%;
+    margin-left: 10%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.margin-episodes{
+    margin-top: 1rem;
+}
+
+.title-detail-episode {
+    color: black;
+    font-weight: bolder;
+}
+
+
+.list-episodes-table {
+    width: 100%;
+    padding-left: 10%;
+    border-collapse: collapse;
+
+
+}
+
+.list-episodes-table thead th {
+    background-color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.list-episodes-table-track-row td {
+    padding: 12px;
+}
+
+.list-episodes-table-main-column {
+    width: 65%;
+    font-weight: 600;
+}
+
+.list-episodes-table-bordered {
+
+    text-align: center;
+}
+
+
+.list-episodes-header {
+    width: 112%;
+    height: 50px;
+    padding: 5%;
+    font-weight: bolder;
+    margin-top: 3%;
+    border-collapse: collapse;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 3%;
+    padding: 3%;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.list-detail-episodes {
+    width: 112%;
+
+    font-weight: bolder;
+    margin-top: 3%;
+
+
+    margin-bottom: 3%;
+
+    font-weight: bolder;
+
+    background-color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+    font-size: 0.8rem;
+
+
+}
+
+.header-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+/* Desktop */
+@media (min-width: 1200px) {
+
+    .list-episodes-table-container {
+        margin-top: 1%;
+    }
+
+    .list-episodes-header {
+
+        width: 100%;
+        height: 50px;
+        padding: 5%;
+        font-weight: bolder;
+        margin-top: 2%;
+        border-collapse: collapse;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 3%;
+        padding: 3%;
+        font-weight: bolder;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+
+
+.list-episodes-table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.list-episodes-table tbody tr {
+    border-bottom: 1px solid #ededed;
+}
+
+
+.list-episodes-table-container-items {
+    background-color: rgb(255, 255, 255);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    font-size: 0.8rem;
+    width: 112%;
+}
+
+
+@media (min-width: 1200px) {
+    .list-episodes-table-container-items {
+        width: 100%;
+        padding: 1rem;
+
+
+    }
+}
+
+
+.player-detail-episode {
+ margin-top: 1rem;
+  background: #000;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.player-detail-episode audio {
+  width: 100%;
+}
+
+
+ 
+
+.container-detail-episode{
+    margin-top: 2rem;
+  width: 80%;
+  margin-left: 10%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    font-size: 2rem;
+  padding-bottom: 2%;
+}
+.title-detail-episode{ 
+ 
+  font-weight: bolder;
+}
+.content-detail-episode{
+  margin-top: 2%;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 2%;
+  color: var(--color-descriptions);
+ 
+}
+
+.player-detail-episode {
+  background: #000;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.player-detail-episode audio {
+  width: 100%;
+}

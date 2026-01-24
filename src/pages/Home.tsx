@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useFetchApi } from '@/hooks/useFetchApi';
-import ListPodcasts from '@/components/ListPodcasts/ListPodcasts';
-import SearchPodcast from '@/components/SearchPodcasts/SearchPodcasts';
+import { useFetchApi } from '../hooks/useFetchApi';
+import ListPodcasts from '../components/ListPodcasts/ListPodcasts';
+import SearchPodcast from '../components/SearchPodcasts/SearchPodcasts';
 import { useMemo } from 'react';
 
 const Home = () => {

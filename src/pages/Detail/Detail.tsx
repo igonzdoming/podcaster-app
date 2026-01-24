@@ -40,8 +40,8 @@ const Detail = () => {
     if (!podcastSelected || !selectedPodcast) return;
 
     setMessage({
-      message: 'Detalle de podcast cargado',
-      type: 'success',
+      message: 'Detalle de podcast completado',
+      type: 'info',
       duration: 2000,
     });
   }, [podcastSelected, selectedPodcast]);

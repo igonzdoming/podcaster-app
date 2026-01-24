@@ -8,7 +8,7 @@ import { useAppContext } from '@/context';
 const Home = () => {
   const { error, setFetchType } = useFetchApi();
   const { setMessage, podcasts } = useAppContext();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
     if (podcasts.length === 0) {
@@ -27,10 +27,10 @@ const Home = () => {
     );
   }, [podcasts, search]);
   useEffect(() => {
-    if (podcasts.length !== 0 && filteredPodcasts && !error) {
+    if (podcasts.length !== 0 && filteredPodcasts && !error && search === '') {
       setMessage({
-        message: 'Listado cargado',
-        type: 'success',
+        message: 'Listado de podcast completado',
+        type: 'info',
         duration: 2000,
       });
     }

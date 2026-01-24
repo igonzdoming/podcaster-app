@@ -8,7 +8,8 @@
 
     .container-detail {
         display: grid;
-        grid-template-columns: 20% 80%;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
         gap: 2%;
     }
 }
@@ -25,7 +26,8 @@
 @media (min-width: 1200px) {
     .container-detail {
         display: grid;
-        grid-template-columns: 20% 80%;
+        grid-template-columns: 0.25fr 1fr;
+        align-items: start;
         gap: 2%;
         width: 80%;
         margin-left: 10%;

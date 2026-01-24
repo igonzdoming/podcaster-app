@@ -6,7 +6,7 @@ import type {
   PodcastsMapingData,
 } from '../api/types/Podcasts';
 import type { Episodes } from '@/api/types/Episodes';
-import type { ToastProps } from '@/api/types/Toast';
+import type { ToastProps } from '@/components/Toast/Types/Toast';
 
 export function AppProvider({ children }: { children: ReactNode }) {
   // Podcasts

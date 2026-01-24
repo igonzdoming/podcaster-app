@@ -4,7 +4,7 @@ import type {
   Podcast,
   PodcastsMapingData,
 } from '../api/types/Podcasts';
-import type { ToastProps } from '@/api/types/Toast';
+import type { ToastProps } from '@/components/Toast/Types/Toast';
 
 export type AppContextType = {
   podcasts: PodcastsMapingData[];

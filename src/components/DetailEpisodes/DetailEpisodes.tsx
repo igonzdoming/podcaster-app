@@ -23,8 +23,8 @@ const DetailEpisodes = ({
   useEffect(() => {
     if (isEpisodeDetail) {
       setMessage({
-        message: 'Detalle de episodio',
-        type: 'success',
+        message: 'Detalle de episodio completado',
+        type: 'info',
         duration: 2000,
       });
     }

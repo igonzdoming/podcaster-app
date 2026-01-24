@@ -62,30 +62,6 @@
 
 
 
- @media (min-width: 1200px) {
-
-     .detail-podcast-container {
-
-
-         border: 1px solid #e5e5e5;
-         box-shadow: var(--shadow);
-         max-height: 40rem;
-         margin-right: 37%;
-         width: 100%;
-         max-width: 480px;
-         margin-right: auto;
-         display: flex;
-         flex-direction: column;
-         width: 100%;
-         padding: 16px;
-         box-sizing: border-box;
-         min-height: 50rem;
-         height: auto;
-         overflow: visible;
-
-     }
- }
-
 
 
  @media (min-width: 1200px) {

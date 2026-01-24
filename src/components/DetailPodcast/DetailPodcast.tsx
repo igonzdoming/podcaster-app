@@ -15,7 +15,7 @@ const DetailPodcast = ({ podcast }: PodcastDetailProps) => {
 
       <div className="detail-podcast-container__content">
         <strong>{podcast.artist}</strong>
-        <span>Song by {podcast.artist}</span>
+        <span>by {podcast.artist}</span>
       </div>
 
       <div className="detail-podcast-container__divider" />

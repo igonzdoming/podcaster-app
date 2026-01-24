@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { formatDateMMDDYYYY } from '../../utils/formatDates';
 import type { ListEpisodesProps } from '../../api/types/Episodes';
 import './DetailEpisodes.css';
@@ -14,6 +14,7 @@ const DetailEpisodes = ({
   podCastId,
   episodeId,
 }: ListEpisodesProps) => {
+  const navigate = useNavigate();
   const isEpisodeDetail = Boolean(episodeId);
   const { setStatusIcon } = useAppContext();
   const filteredPodcast = podcastDetail.find(
@@ -28,6 +29,13 @@ const DetailEpisodes = ({
       });
     }
   }, [isEpisodeDetail]);
+
+  useEffect(() => {
+    if (!filteredPodcast && episodeId) {
+      navigate('/');
+    }
+  }, [filteredPodcast]);
+
   return (
     <div
       className="list-detail-episodes-table-container"

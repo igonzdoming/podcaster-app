@@ -3,35 +3,35 @@ import { getListPodcasts, getPodcastDetail } from '../api/api.services';
 import { useAppContext } from '../context';
 import { formatResponses } from '../utils/formatApiResponses';
 
-export const useFetchApi = (type: string) => {
+export const useFetchApi = () => {
   const {
     setMessage,
     podcasts,
     setPodcasts,
     selectedEpisode,
     podcastSelected,
-    setSelectedPodcast,
     setPodcastDetail,
   } = useAppContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [fetchType, setFetchType] = useState<string>();
   const fetchPodcasts = async () => {
     try {
       setLoading(true);
-      if (type === 'top_100' && podcasts.length === 0) {
+      if (fetchType === 'top_100' && podcasts.length === 0) {
         const data = await getListPodcasts();
         const response = data.feed.entry;
-        setPodcasts(formatResponses(response, type));
+        setPodcasts(formatResponses(response, fetchType));
       }
 
-      if (type === 'podcast_detail' && podcastSelected) {
+      if (fetchType === 'podcast_detail' && podcastSelected) {
         const data = await getPodcastDetail(podcastSelected);
 
         const response = Array.isArray(data.results)
           ? data.results
           : [data.results];
 
-        setPodcastDetail(formatResponses(response, type));
+        setPodcastDetail(formatResponses(response, fetchType));
       }
     } catch {
       setError(true);
@@ -49,7 +49,11 @@ export const useFetchApi = (type: string) => {
   };
   useEffect(() => {
     fetchPodcasts();
-  }, [type, selectedEpisode, podcastSelected]);
+  }, [fetchType, selectedEpisode, podcastSelected]);
 
-  return { podcasts, loading, podcastSelected, setSelectedPodcast, error };
+  return {
+    loading,
+    error,
+    setFetchType,
+  };
 };

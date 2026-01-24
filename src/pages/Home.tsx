@@ -6,9 +6,15 @@ import { useMemo } from 'react';
 import { useAppContext } from '@/context';
 
 const Home = () => {
-  const { podcasts, error } = useFetchApi('top_100');
-  const { setMessage } = useAppContext();
+  const { error, setFetchType } = useFetchApi();
+  const { setMessage, podcasts } = useAppContext();
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    if (podcasts.length === 0) {
+      setFetchType('top_100');
+    }
+  }, [podcasts.length]);
 
   const filteredPodcasts = useMemo(() => {
     return podcasts.filter((podcast) =>

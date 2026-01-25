@@ -1,8 +1,10 @@
 import './ListPodcasts.css';
+import { useLocale } from '@/hooks/useLocale';
 import { Link } from 'react-router-dom';
 import type { PodcastProps } from '@/api/types/Podcasts';
 
 const ListPodcasts = ({ podcasts }: PodcastProps) => {
+  const t = useLocale();
   return (
     <>
       <div className="list-podcasts-container">
@@ -16,7 +18,7 @@ const ListPodcasts = ({ podcasts }: PodcastProps) => {
                 {podcast.title.toUpperCase()}
               </h3>
               <p className="list-podcasts-description">
-                Author: {podcast.artist}
+                {t.components.listPodcasts.author}: {podcast.artist}
               </p>
             </div>
           </Link>

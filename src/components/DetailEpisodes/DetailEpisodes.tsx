@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocale } from '@/hooks/useLocale';
 import { Link } from 'react-router-dom';
 import { formatDateMMDDYYYY } from '../../utils/formatDates';
 import type { ListEpisodesProps } from '../../api/types/Episodes';
@@ -14,6 +15,7 @@ const DetailEpisodes = ({
   podCastId,
   episodeId,
 }: ListEpisodesProps) => {
+  const t = useLocale();
   const isEpisodeDetail = Boolean(episodeId);
   const { setStatusIcon } = useAppContext();
   const filteredPodcast = podcastDetail.find(
@@ -41,7 +43,7 @@ const DetailEpisodes = ({
             className="list-detail-episodes-header"
             style={{ fontWeight: '600' }}
           >
-            Episodes: {podcastCount}
+            {t.components.detailEpisodes.episodes}: {podcastCount}
           </h2>
 
           <div className="list-detail-episodes-table-container-items">
@@ -55,19 +57,19 @@ const DetailEpisodes = ({
                     scope="col"
                     className="list-detail-episodes-table-main-column"
                   >
-                    Title
+                    {t.components.detailEpisodes.table.columns[0]}
                   </th>
                   <th
                     scope="col"
                     className="list-detail-episodes-table-bordered"
                   >
-                    Date
+                    {t.components.detailEpisodes.table.columns[1]}
                   </th>
                   <th
                     scope="col"
                     className="list-detail-episodes-table-bordered"
                   >
-                    Duration
+                    {t.components.detailEpisodes.table.columns[2]}
                   </th>
                 </tr>
               </thead>

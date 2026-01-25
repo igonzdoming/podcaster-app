@@ -1,5 +1,15 @@
 # Podcaster-app
 
+## Nota importante
+
+Se han incluido los siguientes archivos al no tratarse de un proyecto real y por ser necesarios para el correcto
+funcionamiento de la aplicación:
+
+- .env.development
+- .env.production
+
+En un proyecto real, estos archivos, no deben de alojarse bajo ningún concepto.
+
 ## Funcionalidad
 
 La funcionalidad de esta aplicación , radica en mostrar un listado con los 100 podcasts más populares de Itunes. Contará con un buscador reactivo. Además se podrá ver el detalle de cada podcast y los episodios asociados al mismo.

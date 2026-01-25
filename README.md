@@ -74,3 +74,16 @@ Si se desea realizar todas las pruebas a la vez, ejecutar el siguiente comando e
 ```js
 npm run test
 ```
+
+## Responsive
+
+Se ha seguido la estrategia de construir la aplicación en mobile-first. Originando que la aplicación desde el inicio pueda ser usada en dispotivos
+móviles y tablets.
+
+Para un visionado optimo responsive, se puede tomar como referencia la configuración en navegador de:
+
+- Iphone 12 Pro 390 x 844 portrait y landscape
+- IPad Pro 1366 x 1024 portrait y landscape
+
+En cuanto Css se ha obtado por usar css nativo y no depender de dependencias de terceros.Aunque se podría haber utilizado librerías como SASS, que
+ofrece una mejora en cuanto al uso de medias query's/mixings en el proyecto

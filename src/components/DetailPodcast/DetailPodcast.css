@@ -12,7 +12,7 @@
  }
 
 
- .detail-podcast-container__image {
+ .detail-podcast-container-card-image {
      display: flex;
      justify-content: center;
      align-items: center;
@@ -22,7 +22,7 @@
      background-color: #fff;
  }
 
- .detail-podcast-container__image img {
+ .detail-podcast-container-card-image img {
      width: 100%;
      max-width: 220px;
      height: auto;
@@ -31,7 +31,7 @@
  }
 
 
- .detail-podcast-container__divider {
+ .detail-podcast-container-divider {
      height: 1px;
      margin: 12px 0;
      background-color: #d3d3d3;

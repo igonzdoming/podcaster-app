@@ -1,13 +1,17 @@
+import Header from '../src/components/Header/Header';
+import StatusIcon from './components/StatusIcon/StatusIcon';
+import AppRouter from './router/AppRouter';
+import { useScrollToTop } from './hooks/useScrollToTop';
 
-import './App.css';
+const App = () => {
+  useScrollToTop();
 
-const  App = () => {
   return (
-    <>
-      <div> Podcaster
-        </div>
-    </>
+    <main>
+      <Header />
+      <AppRouter />
+      <StatusIcon />
+    </main>
   );
-}
-
+};
 export default App;

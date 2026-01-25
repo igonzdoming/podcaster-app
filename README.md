@@ -20,7 +20,7 @@ A continuación se exponen la explicación de cada unas de las capas:
 
 - context/: Contiene el estado compartido Context API
 
-- hooks/: contiene lógica reutilizable (Custom hooks)
+- hooks/: Contiene lógica reutilizable (Custom hooks)
 
 - mocks/: Datos simulados para test o desarrollo en local.
 
@@ -85,5 +85,4 @@ Para un visionado optimo responsive, se puede tomar como referencia la configura
 - Iphone 12 Pro 390 x 844 portrait y landscape
 - IPad Pro 1366 x 1024 portrait y landscape
 
-En cuanto Css se ha obtado por usar css nativo y no depender de dependencias de terceros.Aunque se podría haber utilizado librerías como SASS, que
-ofrece una mejora en cuanto al uso de medias query's/mixings en el proyecto
+En cuanto CSS se ha optado por usar CSS nativo y no depender de dependencias de terceros. Aunque se podría haber utilizado librerías como SASS, que ofrece una mejora en cuanto al uso de medias query's/mixings en el proyecto

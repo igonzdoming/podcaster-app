@@ -48,7 +48,6 @@ const Detail = () => {
   if (!podcastSelected || !selectedPodcast) {
     return null;
   }
-
   return (
     <div className="container-detail">
       <DetailPodcast podcast={selectedPodcast} />

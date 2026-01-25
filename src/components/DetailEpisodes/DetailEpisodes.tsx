@@ -20,7 +20,6 @@ const DetailEpisodes = ({
   const filteredPodcast = podcastDetail.find(
     (pod) => pod.trackId === Number(episodeId)
   );
-
   useEffect(() => {
     if (isEpisodeDetail) {
       setStatusIcon({

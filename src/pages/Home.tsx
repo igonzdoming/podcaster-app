@@ -34,7 +34,6 @@ const Home = () => {
       });
     }
   }, [filteredPodcasts]);
-
   return (
     <div>
       <SearchPodcast

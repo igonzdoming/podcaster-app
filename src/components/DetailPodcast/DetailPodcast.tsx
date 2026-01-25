@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useLocale } from '@/hooks/useLocale';
 import './DetailPodcast.css';
 import type { PodcastDetailProps } from '@/api/types/Podcasts';
 
 const DetailPodcast = ({ podcast }: PodcastDetailProps) => {
+  const t = useLocale();
   return (
     <div className="detail-podcast-container">
       <Link to={`/podcast/${podcast.id}`}>
@@ -15,13 +17,15 @@ const DetailPodcast = ({ podcast }: PodcastDetailProps) => {
 
       <div className="detail-podcast-container__content">
         <strong>{podcast.artist}</strong>
-        <span>by {podcast.artist}</span>
+        <span>
+          {t.components.detailPodcast.by} {podcast.artist}
+        </span>
       </div>
 
       <div className="detail-podcast-container-divider" />
 
       <div className="detail-podcast-container__content">
-        <p>Description:</p>
+        <p>{t.components.detailPodcast.description}:</p>
         <span>{podcast.description}</span>
       </div>
     </div>

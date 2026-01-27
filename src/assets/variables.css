@@ -1,21 +1,29 @@
 :root {
-  --color-bg: #ffffff;
-  --color-text: #111827;
+  font-family: Arial, sans-serif;
+  --color-bg: #FFFFFF;
+  --color-title: #000000;
   --color-primary: #427490;
   --color-descriptions: #525252;
-  --spacing-sm: 1rem;
   --color-link: #427490;
-  --spacing-md: 1.5rem;
-  --shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  font-family: Arial, sans-serif;
-  font-weight: 300;
+  --shadow: 0 0 12px #00000033;
+  --shadow-color: #00000033;
+
+  --font-weight-black: 900;
+  --font-weight-semibold: 600;
+  --font-weight-ligth: 300;
+  --font-weight-thin: 100;
+  --font-weight-bold: bold;
+
+
+  --font-size-sm: 0.8rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
 }
 
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
 
 a {
   color: var(--color-link);

@@ -7,8 +7,8 @@
 
 .list-podcasts {
     font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    background: #FFFFFF;
+    font-weight: var(--font-weight-thin);
+    background: var(--color-bg);
     border-radius: 2px;
     width: 300px;
     min-height: 200px;
@@ -47,9 +47,9 @@
 
 .list-podcasts-title {
     margin-top: 90px;
-    color: #000000;
+    color: var(--color-title);
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
 }
 
 .list-podcasts-image-description {
@@ -66,7 +66,7 @@
     border: none;
     border-radius: 5px;
     background: #007BFF;
-    color: #FFFFFF;
+    color: var(--color-bg);
     cursor: pointer;
 }
 
@@ -122,8 +122,8 @@
 @media only screen and (width: 844px) and (height: 390px) and (orientation: landscape) {
     .list-podcasts {
         font-family: "Roboto", sans-serif;
-        font-weight: 100;
-        background: #FFFFFF;
+        font-weight: var(--font-weight-thin);
+        background: var(--color-bg);
         border-radius: 2px;
         width: 150px;
         height: 20px;
@@ -143,8 +143,8 @@
 
     .list-podcasts-title {
         margin-top: -0.5px;
-        color: #000000;
-        font-size: 0.8rem;
-        font-weight: bold;
+        color: var(--color-title);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bold);
     }
 }

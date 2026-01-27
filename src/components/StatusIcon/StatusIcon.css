@@ -4,9 +4,9 @@
   right: 24px;
   padding: 12px 16px;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: var(--color-bg);
   font-size: 14px;
-  box-shadow: 0 4px 12px #00000033;
+  box-shadow: 0 4px 12px var(--shadow-color);
   animation: slideIn 0.3s ease-out;
   z-index: 9999;
 }
@@ -21,9 +21,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: #FFFFFF;
+  color: var(--color-bg);
   font-size: 14px;
-  box-shadow: 0 4px 12px #00000033;
+  box-shadow: 0 4px 12px var(--shadow-color);
   z-index: 9999;
   animation: blink 1s infinite;
 }

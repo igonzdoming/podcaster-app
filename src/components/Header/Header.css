@@ -3,17 +3,10 @@
     justify-content: start;
     height: 60px;
     color: var(--color-primary);
-    font-weight: bolder;
-    font-size: 1.5rem;
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-lg);
     box-shadow: 0 12px 10px -8px #00000040;
     padding: 2% 5%;
-}
-
-.header-link {
-    text-decoration: none;
-    color: inherit;
-    font-weight: 600;
-    cursor: pointer;
 }
 
 @media (min-width: 1200px) {
@@ -24,8 +17,8 @@
         align-items: center;
         height: 60px;
         color: var(--color-primary);
-        font-weight: bolder;
-        font-size: 2rem;
+        font-weight: var(--font-weight-black);
+        font-size: var(--font-size-xl);
         box-shadow: 0 12px 10px -8px #00000040;
         padding: 2% 5%;
         padding-left: 10%;

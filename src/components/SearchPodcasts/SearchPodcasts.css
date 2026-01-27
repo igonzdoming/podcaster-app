@@ -26,11 +26,11 @@
     padding: 0.5rem 1rem;
     min-width: 50px;
     max-height: 40px;
-    font-size: 1.3rem;
+    font-size: var(--font-size-lg);
     text-align: center;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     background-color: #4C90CB;
-    color: #FFFFFF;
+    color: var(--color-bg);
     border-radius: 12px;
 }
 

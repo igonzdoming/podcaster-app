@@ -5,7 +5,7 @@
     margin-top: 10%;
     width: 90%;
     padding: 16px;
-    background-color: #FFFFFF;
+    background-color: var(--color-bg);
     border: 1px solid #E5E5E5;
     box-shadow: var(--shadow);
     height: auto;
@@ -18,7 +18,7 @@
     width: 100%;
     padding: 16px;
     box-sizing: border-box;
-    background-color: #FFFFFF;
+    background-color: var(--color-bg);
 }
 
 .detail-podcast-container-card-image img {
@@ -44,7 +44,7 @@
 }
 
 .detail-podcast-container__content p {
-    font-weight: 900;
+    font-weight: var(--font-weight-black);
 }
 
 .detail-podcast-container__content span {
@@ -52,7 +52,7 @@
 }
 
 .detail-podcast-container__content strong {
-    font-weight: 900;
+    font-weight: var(--font-weight-black);
 }
 
 @media (min-width: 1200px) {

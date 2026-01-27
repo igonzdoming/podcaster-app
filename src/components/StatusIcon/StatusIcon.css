@@ -4,9 +4,9 @@
   right: 24px;
   padding: 12px 16px;
   border-radius: 8px;
-  color: #fff;
+  color: #FFFFFF;
   font-size: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px #00000033;
   animation: slideIn 0.3s ease-out;
   z-index: 9999;
 }
@@ -21,21 +21,19 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: #fff;
+  color: #FFFFFF;
   font-size: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px #00000033;
   z-index: 9999;
-  animation:
-
-    blink 1s infinite;
+  animation: blink 1s infinite;
 }
 
 .status-icon--success {
-  background-color: #16a34a;
+  background-color: #16A34A;
 }
 
 .status-icon--error {
-  background-color: #dc2626;
+  background-color: #DC2626;
 }
 
 .status-icon--info {

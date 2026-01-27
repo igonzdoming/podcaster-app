@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import './StatusIcon.css';
+import { memo, useEffect } from 'react';
 import { useAppContext } from '../../context';
+import './StatusIcon.css';
 
 const StatusIcon = () => {
   const { statusIcon, setStatusIcon } = useAppContext();
@@ -15,9 +15,18 @@ const StatusIcon = () => {
     return () => clearTimeout(timer);
   }, [statusIcon, setStatusIcon]);
 
-  if (!statusIcon) return null;
+  if (!statusIcon) {
+    return null;
+  }
 
-  return <div className={`status-icon-circle status-icon--info`}></div>;
+  return (
+    <div
+      className={`status-icon-circle status-icon--${statusIcon.type}`}
+      role="status"
+      aria-live="polite"
+      aria-label={`Estado: ${statusIcon.type}`}
+    />
+  );
 };
 
-export default StatusIcon;
+export default memo(StatusIcon);

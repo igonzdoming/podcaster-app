@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocale } from '@/hooks/useLocale';
 import './DetailPodcast.css';
@@ -5,11 +6,17 @@ import type { PodcastDetailProps } from '@/api/types/Podcasts';
 
 const DetailPodcast = ({ podcast }: PodcastDetailProps) => {
   const t = useLocale();
+
   return (
     <div className="detail-podcast-container">
       <Link to={`/podcast/${podcast.id}`}>
         <div className="detail-podcast-container-card-image">
-          <img src={podcast.img} alt={podcast.title} />
+          <img
+            src={podcast.img}
+            alt={podcast.title}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </Link>
 
@@ -32,4 +39,4 @@ const DetailPodcast = ({ podcast }: PodcastDetailProps) => {
   );
 };
 
-export default DetailPodcast;
+export default memo(DetailPodcast);

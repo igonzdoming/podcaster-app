@@ -57,8 +57,6 @@
 
 @media (min-width: 1200px) {
     .detail-podcast-container {
-        display: flex;
-        flex-direction: column;
         gap: 8px;
         flex-grow: 1;
         overflow-wrap: break-word;

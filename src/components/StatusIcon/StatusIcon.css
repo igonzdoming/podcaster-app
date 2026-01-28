@@ -29,11 +29,11 @@
 }
 
 .status-icon--success {
-  background-color: #16A34A;
+  background-color: var(--color-success);
 }
 
 .status-icon--error {
-  background-color: #DC2626;
+  background-color: var(--color-error);
 }
 
 .status-icon--info {

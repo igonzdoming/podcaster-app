@@ -104,6 +104,8 @@ A continuación se exponen la explicación de cada unas de las capas:
 
 - hooks/: Contiene lógica reutilizable (Custom hooks)
 
+- locale/: Contiene las traducciones de los textos de la aplicación en los idiomas español e inglés
+
 - mocks/: Datos simulados para test o desarrollo en local.
 
 - pages/: Pantallas con componentes de alto nivel asociados a rutas.

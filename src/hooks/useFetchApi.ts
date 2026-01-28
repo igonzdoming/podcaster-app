@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getListPodcasts, getPodcastDetail } from '../api/api.services';
 import { useAppContext } from '../context';
 import { formatResponses } from '../utils/formatApiResponses';
-import { useNavigate } from 'react-router-dom';
+import type { FormatType } from '@/api/types/Podcasts';
 
 export const useFetchApi = () => {
+  const navigate = useNavigate();
   const {
     podcasts,
     setPodcasts,
@@ -12,13 +14,17 @@ export const useFetchApi = () => {
     podcastSelected,
     setPodcastDetail,
   } = useAppContext();
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [fetchType, setFetchType] = useState<string>();
-  const fetchPodcasts = async () => {
+  const [fetchType, setFetchType] = useState<FormatType>();
+
+  const fetchPodcasts = useCallback(async () => {
+    if (!fetchType) return;
+
     try {
       setLoading(true);
+
       if (fetchType === 'top_100' && podcasts.length === 0) {
         const data = await getListPodcasts();
         const response = data.feed.entry;
@@ -27,7 +33,6 @@ export const useFetchApi = () => {
 
       if (fetchType === 'podcast_detail' && podcastSelected) {
         const data = await getPodcastDetail(podcastSelected);
-
         const response = Array.isArray(data.results)
           ? data.results
           : [data.results];
@@ -37,16 +42,22 @@ export const useFetchApi = () => {
     } catch {
       setError(true);
       navigate('/');
-      setTimeout(() => {
-        setError(false);
-      }, 200);
+      setTimeout(() => setError(false), 200);
     } finally {
       setLoading(false);
     }
-  };
+  }, [
+    fetchType,
+    podcasts.length,
+    podcastSelected,
+    navigate,
+    setPodcasts,
+    setPodcastDetail,
+  ]);
+
   useEffect(() => {
     fetchPodcasts();
-  }, [fetchType, selectedEpisode, podcastSelected]);
+  }, [fetchPodcasts, selectedEpisode]);
 
   return {
     loading,

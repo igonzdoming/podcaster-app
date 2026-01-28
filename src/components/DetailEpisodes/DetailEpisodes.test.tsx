@@ -28,7 +28,7 @@ const renderComponent = () =>
       <DetailEpisodes
         podcastDetail={mockEpisodes}
         podcastCount={2}
-        podCastId="1535809341"
+        podcastId="1535809341"
         episodeId={undefined}
       />
     </MemoryRouter>

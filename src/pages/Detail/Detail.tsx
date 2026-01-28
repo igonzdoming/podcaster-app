@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetchApi } from '../../hooks/useFetchApi';
 import { useAppContext } from '../../context';
@@ -7,34 +7,31 @@ import DetailEpisodes from '../../components/DetailEpisodes/DetailEpisodes';
 import './Detail.css';
 
 const Detail = () => {
-  const { id, episodeId } = useParams<{ id: string; episodeId: string }>();
-
+  const { podcastId, episodeId } = useParams<{
+    podcastId: string;
+    episodeId: string;
+  }>();
   const { setFetchType } = useFetchApi();
 
   const {
     podcasts,
     podcastSelected,
     podcastDetail,
-    setStatusIcon,
     setSelectedPodcast,
+    setStatusIcon,
   } = useAppContext();
 
-  const selectedPodcast = useMemo(
-    () => podcasts.find((pod) => pod.id === id),
-    [podcasts, id]
-  );
+  const selectedPodcast = useMemo(() => {
+    if (!podcastId || podcasts.length === 0) return null;
+    return podcasts.find((pod) => pod.id === podcastId) ?? null;
+  }, [podcasts, podcastId]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!podcastId) return;
 
-    setSelectedPodcast(id);
-
-    if (podcasts.length === 0) {
-      setFetchType('top_100');
-    } else {
-      setFetchType('podcast_detail');
-    }
-  }, [id, podcasts.length]);
+    setSelectedPodcast(podcastId);
+    setFetchType(podcasts.length === 0 ? 'top_100' : 'podcast_detail');
+  }, [podcastId, podcasts.length, setFetchType, setSelectedPodcast]);
 
   useEffect(() => {
     if (!podcastSelected || !selectedPodcast) return;
@@ -43,21 +40,24 @@ const Detail = () => {
       type: 'info',
       duration: 2000,
     });
-  }, [podcastSelected, selectedPodcast]);
+  }, [podcastSelected, selectedPodcast, setStatusIcon]);
 
-  if (!podcastSelected || !selectedPodcast) {
+  if (!selectedPodcast || !podcastSelected) {
     return null;
   }
+
   return (
     <div className="container-detail">
       <DetailPodcast podcast={selectedPodcast} />
+
       <DetailEpisodes
         podcastDetail={podcastDetail}
         episodeId={episodeId}
         podcastCount={podcastDetail.length}
-        podCastId={id}
+        podcastId={podcastId}
       />
     </div>
   );
 };
-export default Detail;
+
+export default memo(Detail);

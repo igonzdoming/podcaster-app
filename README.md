@@ -1,4 +1,4 @@
-# Podcaster-app
+# Podcaster-app(v1.0.3)
 
 ## Nota importante
 
@@ -9,6 +9,78 @@ funcionamiento de la aplicación:
 - .env.production
 
 En un proyecto real, estos archivos, no deben de alojarse bajo ningún concepto.
+
+## Primeros pasos
+
+Antes de inicializar la aplicación, primero se deben descargar las dependencias de proyecto. Para ello ejecutar primero el siguiente comando:
+
+```js
+npm install
+```
+
+Una vez tengamos instaladas las dependencias, podemos inicializar la aplicación con el siguiente comando
+
+```js
+npm run dev
+```
+
+# Scripts y explicación
+
+En el fichero package.json, disponemos de una serie de comandos que podemos ejecutar con "npm run", seguido del comando. Como se observa a continuación:
+
+Comando para inicializar la aplicación
+
+```js
+npm run dev
+```
+
+Comando para construir la aplicación para el entorno de producción
+
+```js
+npm run build
+```
+
+Comando para una vez realizada una construcción de la aplicación (npm run build), poder visualizar en el cliente el contenido estático resultante
+
+```js
+npm run preview
+```
+
+Comando para inicializar los test
+
+```js
+npm run test
+```
+
+Comando para ver y ejecutar los tests en una interfaz gráfica desde el navegador.
+
+```js
+npm run test:ui
+```
+
+Comando para ejecutar todos los tests una vez y salir.
+
+```js
+npm run test:run
+```
+
+Comando para saber qué parte de tu código está realmente testeada.
+
+```js
+npm run test:coverage
+```
+
+Comando para que ESLint revise tu código y comente errores y malas prácticas.
+
+```js
+npm run lint
+```
+
+Comando para que ESLint arregle automáticamente lo que pueda.
+
+```js
+npm run lint:fix
+```
 
 ## Funcionalidad
 

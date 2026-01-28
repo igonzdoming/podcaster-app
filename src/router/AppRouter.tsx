@@ -7,8 +7,11 @@ export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/podcast/:id" element={<Detail />} />
-      <Route path="/podcast/:id/episode/:episodeId" element={<Detail />} />
+      <Route path="/podcast/:podcastId" element={<Detail />} />
+      <Route
+        path="/podcast/:podcastId/episode/:episodeId"
+        element={<Detail />}
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

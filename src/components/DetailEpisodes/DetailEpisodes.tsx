@@ -10,7 +10,7 @@ import './DetailEpisodes.css';
 const DetailEpisodes = ({
   podcastDetail,
   podcastCount,
-  podCastId,
+  podcastId,
   episodeId,
 }: ListEpisodesProps) => {
   const t = useLocale();
@@ -43,7 +43,7 @@ const DetailEpisodes = ({
       >
         <td>
           <Link
-            to={`/podcast/${podCastId}/episode/${episode.trackId}`}
+            to={`/podcast/${podcastId}/episode/${episode.trackId}`}
             aria-label={`Abrir episodio ${episode.trackName}`}
           >
             {episode.trackName}
@@ -55,7 +55,7 @@ const DetailEpisodes = ({
         <td className="bordered">{formatDuration(episode.duration)}</td>
       </tr>
     ));
-  }, [podcastDetail, podCastId]);
+  }, [podcastDetail, podcastId]);
 
   return (
     <div
@@ -102,7 +102,7 @@ const DetailEpisodes = ({
         selectedEpisode && (
           <div className="list-detail-episodes-table-container-items margin-episodes">
             <Link
-              to={`/podcast/${podCastId}`}
+              to={`/podcast/${podcastId}`}
               aria-label="Volver a la lista de episodios"
             >
               <div className="title-detail-episode">

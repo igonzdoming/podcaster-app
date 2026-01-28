@@ -7,7 +7,10 @@ import DetailEpisodes from '../../components/DetailEpisodes/DetailEpisodes';
 import './Detail.css';
 
 const Detail = () => {
-  const { id, episodeId } = useParams<{ id: string; episodeId: string }>();
+  const { podcastId, episodeId } = useParams<{
+    podcastId: string;
+    episodeId: string;
+  }>();
   const { setFetchType } = useFetchApi();
 
   const {
@@ -19,16 +22,16 @@ const Detail = () => {
   } = useAppContext();
 
   const selectedPodcast = useMemo(() => {
-    if (!id || podcasts.length === 0) return null;
-    return podcasts.find((pod) => pod.id === id) ?? null;
-  }, [podcasts, id]);
+    if (!podcastId || podcasts.length === 0) return null;
+    return podcasts.find((pod) => pod.id === podcastId) ?? null;
+  }, [podcasts, podcastId]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!podcastId) return;
 
-    setSelectedPodcast(id);
+    setSelectedPodcast(podcastId);
     setFetchType(podcasts.length === 0 ? 'top_100' : 'podcast_detail');
-  }, [id, podcasts.length, setFetchType, setSelectedPodcast]);
+  }, [podcastId, podcasts.length, setFetchType, setSelectedPodcast]);
 
   useEffect(() => {
     if (!podcastSelected || !selectedPodcast) return;
@@ -51,7 +54,7 @@ const Detail = () => {
         podcastDetail={podcastDetail}
         episodeId={episodeId}
         podcastCount={podcastDetail.length}
-        podCastId={id}
+        podcastId={podcastId}
       />
     </div>
   );

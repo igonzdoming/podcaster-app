@@ -43,8 +43,11 @@ const renderWithRouter = (initialRoute: string) => {
   return render(
     <MemoryRouter initialEntries={[initialRoute]}>
       <Routes>
-        <Route path="/podcast/:id" element={<Detail />} />
-        <Route path="/podcast/:id/episode/:episodeId" element={<Detail />} />
+        <Route path="/podcast/:podcastId" element={<Detail />} />
+        <Route
+          path="/podcast/:podcastId/episode/:episodeId"
+          element={<Detail />}
+        />
       </Routes>
     </MemoryRouter>
   );

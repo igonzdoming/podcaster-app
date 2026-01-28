@@ -6,7 +6,7 @@
     width: 90%;
     padding: 16px;
     background-color: var(--color-bg);
-    border: 1px solid #E5E5E5;
+    border: 1px solid var(--border-color-thin);
     box-shadow: var(--shadow);
     height: auto;
 }
@@ -32,7 +32,7 @@
 .detail-podcast-container-divider {
     height: 1px;
     margin: 12px 0;
-    background-color: #D3D3D3;
+    background-color: var(--border-color-thin);
 }
 
 .detail-podcast-container__content {

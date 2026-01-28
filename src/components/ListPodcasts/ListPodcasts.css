@@ -16,7 +16,7 @@
     padding: 10px 10px 30px 10px;
     margin: 5%;
     margin-top: 10%;
-    box-shadow: 0 10px 12px #00000014;
+    box-shadow: 0 10px 12px var(--shadow-color);
     position: relative;
     box-sizing: border-box;
     text-align: center;
@@ -27,7 +27,6 @@
 .list-podcasts-image {
     width: 140px;
     height: 140px;
-    background-color: #EF1C25;
     border-radius: 50%;
     position: absolute;
     top: -70px;

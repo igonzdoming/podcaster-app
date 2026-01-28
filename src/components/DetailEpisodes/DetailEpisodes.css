@@ -98,7 +98,7 @@
 }
 
 .list-detail-episodes-table tbody tr {
-    border-bottom: 1px solid #EDEDED;
+    border-bottom: 1px solid var(--border-color-thin);
 }
 
 .list-detail-episodes-table-container-items {
@@ -118,7 +118,7 @@
 
 .player-detail-episode {
     margin-top: 1rem;
-    background: #000000;
+    background: var(--color-title);
     padding: 12px;
     border-radius: 8px;
 }

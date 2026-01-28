@@ -1,34 +1,61 @@
-import { useEffect } from 'react';
-import { useLocale } from '@/hooks/useLocale';
+import { memo, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocale } from '@/hooks/useLocale';
+import { useAppContext } from '@/context';
 import { formatDateMMDDYYYY } from '../../utils/formatDates';
+import { formatDuration } from '../../utils/formatTimes';
 import type { ListEpisodesProps } from '../../api/types/Episodes';
 import './DetailEpisodes.css';
-import { formatDuration } from '../../utils/formatTimes';
-import { useAppContext } from '@/context';
-
-const ROW_COLORS = ['#F9F9F9', '#fff'];
 
 const DetailEpisodes = ({
   podcastDetail,
   podcastCount,
-  podCastId,
+  podcastId,
   episodeId,
 }: ListEpisodesProps) => {
   const t = useLocale();
-  const isEpisodeDetail = Boolean(episodeId);
   const { setStatusIcon } = useAppContext();
-  const filteredPodcast = podcastDetail.find(
-    (pod) => pod.trackId === Number(episodeId)
-  );
+  const isEpisodeDetail = Boolean(episodeId);
+
+  const selectedEpisode = useMemo(() => {
+    if (!episodeId) return null;
+    return podcastDetail.find(
+      (episode) => episode.trackId === Number(episodeId)
+    );
+  }, [podcastDetail, episodeId]);
+
   useEffect(() => {
-    if (isEpisodeDetail) {
-      setStatusIcon({
-        type: 'info',
-        duration: 2000,
-      });
-    }
-  }, [isEpisodeDetail]);
+    if (!isEpisodeDetail) return;
+
+    setStatusIcon({
+      type: 'info',
+      duration: 2000,
+    });
+  }, [isEpisodeDetail, setStatusIcon]);
+
+  const tableRows = useMemo(() => {
+    return podcastDetail.map((episode, index) => (
+      <tr
+        key={episode.trackId}
+        className={`list-detail-episodes-table-track-row ${
+          index % 2 === 0 ? 'row-even' : 'row-odd'
+        }`}
+      >
+        <td>
+          <Link
+            to={`/podcast/${podcastId}/episode/${episode.trackId}`}
+            aria-label={`Abrir episodio ${episode.trackName}`}
+          >
+            {episode.trackName}
+          </Link>
+        </td>
+
+        <td>{formatDateMMDDYYYY(episode.releaseDate)}</td>
+
+        <td className="bordered">{formatDuration(episode.duration)}</td>
+      </tr>
+    ));
+  }, [podcastDetail, podcastId]);
 
   return (
     <div
@@ -38,11 +65,7 @@ const DetailEpisodes = ({
     >
       {!isEpisodeDetail ? (
         <>
-          <h2
-            id="episodes-title"
-            className="list-detail-episodes-header"
-            style={{ fontWeight: '600' }}
-          >
+          <h2 id="episodes-title" className="list-detail-episodes-header">
             {t.components.detailEpisodes.episodes}: {podcastCount}
           </h2>
 
@@ -53,85 +76,58 @@ const DetailEpisodes = ({
             >
               <thead>
                 <tr>
-                  <th
-                    scope="col"
-                    className="list-detail-episodes-table-main-column"
-                  >
-                    {t.components.detailEpisodes.table.columns[0]}
-                  </th>
-                  <th
-                    scope="col"
-                    className="list-detail-episodes-table-bordered"
-                  >
-                    {t.components.detailEpisodes.table.columns[1]}
-                  </th>
-                  <th
-                    scope="col"
-                    className="list-detail-episodes-table-bordered"
-                  >
-                    {t.components.detailEpisodes.table.columns[2]}
-                  </th>
+                  {t.components.detailEpisodes.table.columns.map(
+                    (column, index) => (
+                      <th
+                        key={index}
+                        scope="col"
+                        className={
+                          index === 0
+                            ? 'list-detail-episodes-table-main-column'
+                            : 'list-detail-episodes-table-bordered'
+                        }
+                      >
+                        {column}
+                      </th>
+                    )
+                  )}
                 </tr>
               </thead>
 
-              <tbody>
-                {podcastDetail.map((track, index) => (
-                  <tr
-                    key={track.trackId}
-                    className="list-detail-episodes-table-track-row"
-                    style={{
-                      backgroundColor: ROW_COLORS[index % ROW_COLORS.length],
-                    }}
-                  >
-                    <td>
-                      <Link
-                        to={`/podcast/${podCastId}/episode/${track.trackId}`}
-                        aria-label={`Abrir episodio ${track.trackName}`}
-                      >
-                        {track.trackName}
-                      </Link>
-                    </td>
-
-                    <td>{formatDateMMDDYYYY(track.releaseDate)}</td>
-
-                    <td className="bordered">
-                      {formatDuration(track.duration)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              <tbody>{tableRows}</tbody>
             </table>
           </div>
         </>
       ) : (
-        filteredPodcast && (
+        selectedEpisode && (
           <div className="list-detail-episodes-table-container-items margin-episodes">
             <Link
-              to={`/podcast/${podCastId}`}
+              to={`/podcast/${podcastId}`}
               aria-label="Volver a la lista de episodios"
             >
               <div className="title-detail-episode">
-                <h2>{filteredPodcast.trackName}</h2>
+                <h2>{selectedEpisode.trackName}</h2>
               </div>
             </Link>
 
-            {filteredPodcast.description && (
+            {selectedEpisode.description && (
               <div
                 className="content-detail-episode"
                 aria-label="Descripción del episodio"
                 dangerouslySetInnerHTML={{
-                  __html: filteredPodcast.description,
+                  __html: selectedEpisode.description,
                 }}
               />
             )}
-            {filteredPodcast.previewUrl && (
+
+            {selectedEpisode.previewUrl && (
               <div className="player-detail-episode">
                 <audio
                   controls
                   preload="none"
-                  aria-label={`Reproductor de audio del episodio ${filteredPodcast.trackName}`}
+                  aria-label={`Reproductor de audio del episodio ${selectedEpisode.trackName}`}
                 >
-                  <source src={filteredPodcast.previewUrl} type="audio/mpeg" />
+                  <source src={selectedEpisode.previewUrl} type="audio/mpeg" />
                 </audio>
               </div>
             )}
@@ -142,4 +138,4 @@ const DetailEpisodes = ({
   );
 };
 
-export default DetailEpisodes;
+export default memo(DetailEpisodes);

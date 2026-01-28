@@ -10,6 +10,6 @@ export interface Episodes {
 export type ListEpisodesProps = {
   podcastDetail: FormattedPodcastDetail[];
   podcastCount: number;
-  podCastId?: string;
+  podcastId?: string;
   episodeId?: string;
 };
